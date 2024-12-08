@@ -20,6 +20,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Hint } from "@/components/hint";
 import { CiFileOn } from "react-icons/ci";
+import LocaleSwitch from "@/components/localeSwitch";
 
 export const Navbar = () => {
   return (
@@ -114,6 +115,7 @@ export const Navbar = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          <LocaleSwitch />
         </div>
       </div>
     </nav>

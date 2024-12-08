@@ -1,0 +1,6 @@
+{
+  "file":"文件",
+  "label":"中文",
+  "title":"欢迎",
+  "locale": "{locale, select, cn {中文} en {English} other {Unknown}}"
+}

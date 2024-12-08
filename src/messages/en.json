@@ -1,0 +1,6 @@
+{
+  "file":"file",
+  "label":"English",
+  "title":"welcome",
+  "locale": "{locale, select, cn {中文} en {English} Unknown"
+}

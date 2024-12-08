@@ -20,11 +20,9 @@
     "jsdom": "^24.1.0",
     "lucide-react": "^0.466.0",
     "next": "14.2.4",
-    "next-i18next": "^15.4.0",
     "next-intl": "^3.26.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-i18next": "^15.1.3",
     "react-icons": "^5.4.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
