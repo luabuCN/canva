@@ -21,8 +21,10 @@ import { Separator } from "@/components/ui/separator";
 import { Hint } from "@/components/hint";
 import { CiFileOn } from "react-icons/ci";
 import LocaleSwitch from "@/components/localeSwitch";
+import { useTranslations } from "next-intl";
 
 export const Navbar = () => {
+  const t = useTranslations("editor");
   return (
     <nav className="w-full flex items-center p-4 h-[68px] gap-x-8 border-b lg:pl-[34px]">
       <Logo />
@@ -30,7 +32,7 @@ export const Navbar = () => {
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button size="sm" variant="ghost">
-              File
+              {t("file")}
               <ChevronDown className="size-4 ml-2" />
             </Button>
           </DropdownMenuTrigger>
@@ -40,24 +42,24 @@ export const Navbar = () => {
               <div>
                 <p>JSON</p>
                 <p className="text-xs text-muted-foreground">
-                  Save for later editing
+                  {t("json-desc")}
                 </p>
               </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <Separator orientation="vertical" className="mx-2" />
-        <Hint label="Select " side="bottom" sideOffset={10} align="center">
+        <Hint label={t("select")} side="bottom" sideOffset={10} align="center">
           <Button size="icon" variant="ghost" className="">
             <MousePointerClick className="size-4" />
           </Button>
         </Hint>
-        <Hint label="Undo " side="bottom" sideOffset={10} align="center">
+        <Hint label={t("redo")} side="bottom" sideOffset={10} align="center">
           <Button size="icon" variant="ghost" className="">
             <Undo2 className="size-4" />
           </Button>
         </Hint>
-        <Hint label="Redo " side="bottom" sideOffset={10} align="center">
+        <Hint label={t("undo")} side="bottom" sideOffset={10} align="center">
           <Button size="icon" variant="ghost" className="">
             <Redo2 className="size-4" />
           </Button>
@@ -65,15 +67,15 @@ export const Navbar = () => {
         <Separator orientation="vertical" className="mx-2" />
         <div className=" flex items-center gap-x-2">
           <BsCloudCheck className="size-[20px] text-muted-foreground" />
-          <div className=" text-xs">saved</div>
+          <div className=" text-xs">{t("saved")}</div>
         </div>
 
         <div className="ml-auto flex items-center gap-x-4">
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
               <Button size="sm" variant="ghost">
-                Export
-                <Download className="size-4 ml-4" />
+                {t("export")}
+                <Download className="size-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="min-w-60">
@@ -82,7 +84,7 @@ export const Navbar = () => {
                 <div>
                   <p>JSON</p>
                   <p className="text-xs text-muted-foreground">
-                    Save for later editing
+                    {t("json-desc")}
                   </p>
                 </div>
               </DropdownMenuItem>
@@ -91,7 +93,7 @@ export const Navbar = () => {
                 <div>
                   <p>PNG</p>
                   <p className="text-xs text-muted-foreground">
-                    Best for sharing on the web
+                    {t("png-desc")}
                   </p>
                 </div>
               </DropdownMenuItem>
@@ -100,7 +102,7 @@ export const Navbar = () => {
                 <div>
                   <p>JPG</p>
                   <p className="text-xs text-muted-foreground">
-                    Best for printing
+                    {t("jpg-desc")}
                   </p>
                 </div>
               </DropdownMenuItem>
@@ -109,7 +111,7 @@ export const Navbar = () => {
                 <div>
                   <p>SVG</p>
                   <p className="text-xs text-muted-foreground">
-                    Best for editing in vector software
+                    {t("svg-desc")}
                   </p>
                 </div>
               </DropdownMenuItem>

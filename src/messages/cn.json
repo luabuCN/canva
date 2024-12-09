@@ -1,6 +1,16 @@
 {
-  "file":"文件",
-  "label":"中文",
-  "title":"欢迎",
-  "locale": "{locale, select, cn {中文} en {English} other {Unknown}}"
+  "file": "文件",
+  "title": "可画",
+  "editor": {
+    "file": "文件",
+    "json-desc": "保存以便编辑",
+    "select": "选中",
+    "redo": "重做",
+    "undo": "撤消",
+    "saved": "保存",
+    "export": "导出",
+    "png-desc": "最适合在网络上分享",
+    "jpg-desc": "最适合打印",
+    "svg-desc": "最适合在图像软件中进行编辑"
+  }
 }

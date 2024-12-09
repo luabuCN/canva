@@ -1,6 +1,16 @@
 {
-  "file":"file",
-  "label":"English",
-  "title":"welcome",
-  "locale": "{locale, select, cn {中文} en {English} Unknown"
+  "file": "file",
+  "title": "sketchable",
+  "editor": {
+    "file": "File",
+    "json-desc": "Save for later editing",
+    "select": "Select",
+    "redo": "Redo",
+    "undo": "Undo",
+    "saved": "saved",
+    "export": "Export",
+    "png-desc": "Best for sharing on the web",
+    "jpg-desc": "Best for printing",
+    "svg-desc": "Best for editing in vector software"
+  }
 }
