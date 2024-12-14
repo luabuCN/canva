@@ -1,12 +1,188 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { fabric } from "fabric";
 import { useAutoResize } from "./use-auto-resize";
+import {
+  CIRCLE_OPTIONS,
+  DIAMOND_OPTIONS,
+  HEART_OPTIONS,
+  PARALLELOGRAM_OPTIONS,
+  RECTANGLE_OPTIONS,
+  STAR_OPTIONS,
+  TRIANGLE_OPTIONS,
+  type BuildEditorProps,
+  type Editor,
+} from "../type";
+
+const buildEditor = ({ canvas }: BuildEditorProps): Editor => {
+  const getWorkspace = () => {
+    return canvas.getObjects().find((object) => object.name === "clip");
+  };
+  const center = (object: fabric.Object) => {
+    const workspace = getWorkspace();
+    const center = workspace?.getCenterPoint();
+    if (!center) return;
+    // @ts-ignore
+    canvas._centerObject(object, center);
+  };
+  const addToCanvas = (object: fabric.Object) => {
+    center(object);
+    canvas.add(object);
+    canvas.setActiveObject(object);
+  };
+
+  return {
+    addCircle: () => {
+      const object = new fabric.Circle({
+        ...CIRCLE_OPTIONS,
+      });
+      addToCanvas(object);
+    },
+    addSoftRectangle: () => {
+      const object = new fabric.Rect({
+        ...RECTANGLE_OPTIONS,
+        rx: 50,
+        ry: 50,
+      });
+      addToCanvas(object);
+    },
+    addRectangle: () => {
+      const object = new fabric.Rect({
+        ...RECTANGLE_OPTIONS,
+      });
+      addToCanvas(object);
+    },
+    addTriangle: () => {
+      const object = new fabric.Triangle({
+        ...TRIANGLE_OPTIONS,
+      });
+      addToCanvas(object);
+    },
+    addInverseTriangle: () => {
+      const HEIGHT = TRIANGLE_OPTIONS.height;
+      const WIDTH = TRIANGLE_OPTIONS.width;
+
+      const object = new fabric.Polygon(
+        [
+          { x: 0, y: 0 },
+          { x: WIDTH, y: 0 },
+          { x: WIDTH / 2, y: HEIGHT },
+        ],
+        {
+          ...TRIANGLE_OPTIONS,
+        }
+      );
+      addToCanvas(object);
+    },
+    addDiamond: () => {
+      const HEIGHT = DIAMOND_OPTIONS.height;
+      const WIDTH = DIAMOND_OPTIONS.width;
+
+      const object = new fabric.Polygon(
+        [
+          { x: WIDTH / 2, y: 0 },
+          { x: WIDTH, y: HEIGHT / 2 },
+          { x: WIDTH / 2, y: HEIGHT },
+          { x: 0, y: HEIGHT / 2 },
+        ],
+        {
+          ...DIAMOND_OPTIONS,
+        }
+      );
+      addToCanvas(object);
+    },
+    addStar: () => {
+      const { outerRadius, innerRadius } = STAR_OPTIONS;
+      const centerX = 0;
+      const centerY = 0;
+
+      const points = [];
+      const step = Math.PI / 5;
+      for (let i = 0; i < 10; i++) {
+        const radius = i % 2 === 0 ? outerRadius : innerRadius;
+        const angle = step * i - Math.PI / 2;
+        points.push({
+          x: centerX + radius * Math.cos(angle),
+          y: centerY + radius * Math.sin(angle),
+        });
+      }
+
+      const object = new fabric.Polygon(points, {
+        ...STAR_OPTIONS,
+      });
+      addToCanvas(object);
+    },
+    addHeart: () => {
+      const { width, height, left, top, fill, stroke, strokeWidth, angle } =
+        HEART_OPTIONS;
+      const heartPath = `
+        M ${width / 2}, ${height / 4}
+        C ${width * 0.85}, ${-height * 0.3}
+          ${width * 1.5}, ${height * 0.35}
+          ${width / 2}, ${height}
+        C ${-width * 0.5}, ${height * 0.35}
+          ${width * 0.15}, ${-height * 0.3}
+          ${width / 2}, ${height / 4}
+        Z
+      `;
+
+      const object = new fabric.Path(heartPath, {
+        left,
+        top,
+        fill,
+        stroke,
+        strokeWidth,
+        angle,
+        scaleX: 1,
+        scaleY: 1,
+        originX: "center",
+        originY: "center",
+      });
+
+      addToCanvas(object);
+    },
+    addParallelogram: () => {
+      const { width, height, left, top, fill, stroke, strokeWidth, skewX } =
+        PARALLELOGRAM_OPTIONS;
+      const skewOffset = (width * Math.tan((skewX * Math.PI) / 180)) / 3;
+      const points = [
+        { x: -width / 2 + skewOffset, y: -height / 2 },
+        { x: width / 2 + skewOffset, y: -height / 2 },
+        { x: width / 2 - skewOffset, y: height / 2 },
+        { x: -width / 2 - skewOffset, y: height / 2 },
+      ];
+
+      // 创建平行四边形对象
+      const object = new fabric.Polygon(points, {
+        left,
+        top,
+        fill,
+        stroke,
+        strokeWidth,
+        angle: 0,
+        originX: "center",
+        originY: "center",
+      });
+
+      addToCanvas(object);
+    },
+  };
+};
+
 export const useEditor = () => {
   const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
   useAutoResize({ canvas, container });
+
+  const editor = useMemo(() => {
+    if (canvas) {
+      return buildEditor({
+        canvas,
+      });
+    }
+    return undefined;
+  }, [canvas]);
 
   const init = useCallback(
     ({
@@ -48,18 +224,9 @@ export const useEditor = () => {
 
       setCanvas(initialCanvas);
       setContainer(initialContainer);
-
-      const test = new fabric.Rect({
-        height: 100,
-        width: 100,
-        fill: "black",
-      });
-
-      initialCanvas.add(test);
-      initialCanvas.centerObject(test);
     },
     []
   );
 
-  return { init };
+  return { init, editor };
 };

@@ -22,8 +22,15 @@ import { Hint } from "@/components/hint";
 import { CiFileOn } from "react-icons/ci";
 import LocaleSwitch from "@/components/localeSwitch";
 import { useTranslations } from "next-intl";
+import type { ActiveTool } from "../type";
+import { cn } from "@/lib/utils";
 
-export const Navbar = () => {
+interface NavbarProps {
+  activeTool: ActiveTool;
+  onChangeActiveTool: (tool: ActiveTool) => void;
+}
+
+export const Navbar = ({ activeTool, onChangeActiveTool }: NavbarProps) => {
   const t = useTranslations("editor");
   return (
     <nav className="w-full flex items-center p-4 h-[68px] gap-x-8 border-b lg:pl-[34px]">
@@ -50,7 +57,12 @@ export const Navbar = () => {
         </DropdownMenu>
         <Separator orientation="vertical" className="mx-2" />
         <Hint label={t("select")} side="bottom" sideOffset={10} align="center">
-          <Button size="icon" variant="ghost" className="">
+          <Button
+            size="icon"
+            variant="ghost"
+            className={cn(activeTool === "select" && "bg-gray-100")}
+            onClick={() => onChangeActiveTool("select")}
+          >
             <MousePointerClick className="size-4" />
           </Button>
         </Hint>

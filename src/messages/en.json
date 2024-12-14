@@ -11,6 +11,13 @@
     "export": "Export",
     "png-desc": "Best for sharing on the web",
     "jpg-desc": "Best for printing",
-    "svg-desc": "Best for editing in vector software"
+    "svg-desc": "Best for editing in vector software",
+    "Image": "Image",
+    "Design": "Design",
+    "Text": "Text",
+    "Shapes": "Shapes",
+    "shapes-des": "Add shapes to your canvas",
+    "Draw": "Draw",
+    "Settings": "Settings"
   }
 }

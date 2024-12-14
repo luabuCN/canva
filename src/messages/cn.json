@@ -11,6 +11,13 @@
     "export": "导出",
     "png-desc": "最适合在网络上分享",
     "jpg-desc": "最适合打印",
-    "svg-desc": "最适合在图像软件中进行编辑"
+    "svg-desc": "最适合在图像软件中进行编辑",
+    "Image": "图像",
+    "Design": "设计",
+    "Text": "文本",
+    "Shapes": "图形",
+    "shapes-des": "向画布添加图形",
+    "Draw": "绘图",
+    "Settings": "设置"
   }
 }
