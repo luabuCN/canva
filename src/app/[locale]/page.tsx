@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
-import LocaleSwitch from "@/components/localeSwitch";
 import { setRequestLocale } from "next-intl/server";
 
 type Props = {
