@@ -18,6 +18,8 @@
     "Shapes": "Shapes",
     "shapes-des": "Add shapes to your canvas",
     "Draw": "Draw",
-    "Settings": "Settings"
+    "Settings": "Settings",
+    "color": "color",
+    "color-desc": "Add fill color to your element"
   }
 }

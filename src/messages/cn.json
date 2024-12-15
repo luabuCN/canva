@@ -18,6 +18,8 @@
     "Shapes": "图形",
     "shapes-des": "向画布添加图形",
     "Draw": "绘图",
-    "Settings": "设置"
+    "Settings": "设置",
+    "color": "填充色",
+    "color-desc": "为你的图形添加填充色"
   }
 }
