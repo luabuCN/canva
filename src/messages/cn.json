@@ -20,6 +20,11 @@
     "Draw": "绘图",
     "Settings": "设置",
     "color": "填充色",
-    "color-desc": "为你的图形添加填充色"
+    "color-desc": "为你的图形添加填充色",
+    "stroke-color": "描边颜色",
+    "stroke-desc": "为你的图形添加描边颜色",
+    "stroke-width": "描边宽度",
+    "stroke-width-desc": "设置描边宽度",
+    "stroke-type": "描边类型"
   }
 }

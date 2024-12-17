@@ -1,5 +1,25 @@
 import * as material from "material-colors";
 
+export const selectionDependentTools = [
+  "fill",
+  "font",
+  "filter",
+  "opacity",
+  "remove-bg",
+  "stroke-color",
+  "stroke-width",
+];
+export interface EditorHookProps {
+  // defaultState?: string;
+  // defaultWidth?: number;
+  // defaultHeight?: number;
+  clearSelectionCallback?: () => void;
+  // saveCallback?: (values: {
+  //   json: string;
+  //   height: number;
+  //   width: number;
+  // }) => void;
+}
 export type ActiveTool =
   | "select"
   | "shapes"
@@ -53,9 +73,9 @@ export type BuildEditorProps = {
   strokeColor: string;
   strokeWidth: number;
   selectedObjects: fabric.Object[];
-  // strokeDashArray: number[];
+  strokeDashArray: number[];
   // fontFamily: string;
-  // setStrokeDashArray: (value: number[]) => void;
+  setStrokeDashArray: (value: number[]) => void;
   setFillColor: (value: string) => void;
   setStrokeColor: (value: string) => void;
   setStrokeWidth: (value: number) => void;
@@ -75,11 +95,16 @@ export interface Editor {
   changeStrokeWidth: (value: number) => void;
   changeFillColor: (value: string) => void;
   changeStrokeColor: (value: string) => void;
+  changeStrokeDashArray: (value: number[]) => void;
   canvas: fabric.Canvas;
-  fillColor: string;
-  strokeColor: string;
-  strokeWidth: number;
+  // fillColor: string;
+  // strokeColor: string;
+  // strokeWidth: number;
   selectedObjects: fabric.Object[];
+  getActiveFillColor: () => string;
+  getActiveStrokeColor: () => string;
+  getActiveStrokeWidth: () => number;
+  getActiveStrokeDashArray: () => number[];
 }
 
 export const FILL_COLOR = "rgba(0,0,0,1)";

@@ -20,6 +20,11 @@
     "Draw": "Draw",
     "Settings": "Settings",
     "color": "color",
-    "color-desc": "Add fill color to your element"
+    "color-desc": "Add fill color to your element",
+    "stroke-color": "stroke-color",
+    "stroke-desc": "Add stroke color to your element",
+    "stroke-width": "stroke-width",
+    "stroke-width-desc": "Set stroke width",
+    "stroke-type": "Stroke type"
   }
 }
