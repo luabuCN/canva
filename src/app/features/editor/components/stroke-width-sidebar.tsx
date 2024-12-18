@@ -14,6 +14,7 @@ import ColorPicker from "./color-picker";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { useEffect, useState } from "react";
 
 interface StrokeWidthProps {
   activeTool: ActiveTool;
@@ -27,7 +28,16 @@ const StrokeWidthSidebar = ({
 }: StrokeWidthProps) => {
   const t = useTranslations("editor");
   const widthValue = editor?.getActiveStrokeWidth() || STROKE_WIDTH;
-  const typeValue = editor?.getActiveStrokeDashArray() || STROKE_DASH_ARRAY;
+  const [typeValue, setTypeValue] = useState<number[]>(
+    editor?.getActiveStrokeDashArray() || STROKE_DASH_ARRAY
+  );
+
+  useEffect(() => {
+    if (editor) {
+      setTypeValue(editor.getActiveStrokeDashArray() || STROKE_DASH_ARRAY);
+    }
+  }, [editor]);
+
   const onClose = () => {
     onChangeActiveTool("select");
   };

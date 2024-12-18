@@ -25,6 +25,15 @@
     "stroke-desc": "Add stroke color to your element",
     "stroke-width": "stroke-width",
     "stroke-width-desc": "Set stroke width",
-    "stroke-type": "Stroke type"
+    "stroke-type": "Stroke type",
+    "bring-forward": "Bring forward",
+    "send-backward": "Send backward",
+    "opacity": "Opacity",
+    "opacity-desc": "Change the opacity of this selected object",
+    "text-desc": "Add text to your canvas",
+    "text-box": "Add a textbox",
+    "text-heading": "Add a heading",
+    "text-subheading": "Add a subheading",
+    "paragraph": "Paragraph"
   }
 }

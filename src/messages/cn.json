@@ -25,6 +25,15 @@
     "stroke-desc": "为你的图形添加描边颜色",
     "stroke-width": "描边宽度",
     "stroke-width-desc": "设置描边宽度",
-    "stroke-type": "描边类型"
+    "stroke-type": "描边类型",
+    "bring-forward": "前移",
+    "send-backward": "后移",
+    "opacity": "透明度",
+    "opacity-desc": "设置选中对象的透明度",
+    "text-desc": "添加文字到画板",
+    "text-box": "添加文本框",
+    "text-heading": "添加标题",
+    "text-subheading": " 添加副标题",
+    "paragraph": "段落"
   }
 }

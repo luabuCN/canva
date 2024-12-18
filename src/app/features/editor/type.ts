@@ -1,3 +1,4 @@
+import type { ITextboxOptions } from "fabric/fabric-impl";
 import * as material from "material-colors";
 
 export const selectionDependentTools = [
@@ -92,11 +93,16 @@ export interface Editor {
   addStar: () => void;
   addHeart: () => void;
   addParallelogram: () => void;
+  changeOpacity: (value: number) => void;
   changeStrokeWidth: (value: number) => void;
   changeFillColor: (value: string) => void;
   changeStrokeColor: (value: string) => void;
   changeStrokeDashArray: (value: number[]) => void;
+  getActiveOpacity: () => number;
   canvas: fabric.Canvas;
+  addText: (value: string, options?: ITextboxOptions) => void;
+  bringForward: () => void;
+  sendBackward: () => void;
   // fillColor: string;
   // strokeColor: string;
   // strokeWidth: number;
