@@ -34,6 +34,9 @@
     "text-box": "Add a textbox",
     "text-heading": "Add a heading",
     "text-subheading": "Add a subheading",
-    "paragraph": "Paragraph"
+    "paragraph": "Paragraph",
+    "font-family": "Font family",
+    "font-family-desc": "Change the text font family",
+    "bold": "Bold"
   }
 }

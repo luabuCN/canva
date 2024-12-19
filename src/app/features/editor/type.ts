@@ -21,6 +21,27 @@ export interface EditorHookProps {
   //   width: number;
   // }) => void;
 }
+
+export const fonts = [
+  "Arial",
+  "Arial Black",
+  "Verdana",
+  "Helvetica",
+  "Tahoma",
+  "Trebuchet MS",
+  "Times New Roman",
+  "Georgia",
+  "Garamond",
+  "Courier New",
+  "Brush Script MT",
+  "Palatino",
+  "Bookman",
+  "Comic Sans MS",
+  "Impact",
+  "Lucida Sans Unicode",
+  "Geneva",
+  "Lucida Console",
+];
 export type ActiveTool =
   | "select"
   | "shapes"
@@ -75,12 +96,12 @@ export type BuildEditorProps = {
   strokeWidth: number;
   selectedObjects: fabric.Object[];
   strokeDashArray: number[];
-  // fontFamily: string;
+  fontFamily: string;
   setStrokeDashArray: (value: number[]) => void;
   setFillColor: (value: string) => void;
   setStrokeColor: (value: string) => void;
   setStrokeWidth: (value: number) => void;
-  // setFontFamily: (value: string) => void;
+  setFontFamily: (value: string) => void;
 };
 
 export interface Editor {
@@ -97,6 +118,7 @@ export interface Editor {
   changeStrokeWidth: (value: number) => void;
   changeFillColor: (value: string) => void;
   changeStrokeColor: (value: string) => void;
+  changeFontFamily: (value: string) => void;
   changeStrokeDashArray: (value: number[]) => void;
   getActiveOpacity: () => number;
   canvas: fabric.Canvas;
@@ -111,6 +133,9 @@ export interface Editor {
   getActiveStrokeColor: () => string;
   getActiveStrokeWidth: () => number;
   getActiveStrokeDashArray: () => number[];
+  getActiveFontFamily: () => string;
+  getActiveFontWeight: () => number;
+  changeFontWeight: (value: number) => void;
 }
 
 export const FILL_COLOR = "rgba(0,0,0,1)";
