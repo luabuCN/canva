@@ -26,6 +26,9 @@ export const fonts = [
   "Arial",
   "Arial Black",
   "Verdana",
+  "阿里妈妈数黑体",
+  "钉钉进步体",
+  "阿里妈妈东方大楷",
   "Helvetica",
   "Tahoma",
   "Trebuchet MS",
@@ -105,6 +108,7 @@ export type BuildEditorProps = {
 };
 
 export interface Editor {
+  delete: () => void;
   addCircle: () => void;
   addSoftRectangle: () => void;
   addRectangle: () => void;
@@ -120,6 +124,7 @@ export interface Editor {
   changeStrokeColor: (value: string) => void;
   changeFontFamily: (value: string) => void;
   changeStrokeDashArray: (value: number[]) => void;
+  changeFontStyle: (value: string) => void;
   getActiveOpacity: () => number;
   canvas: fabric.Canvas;
   addText: (value: string, options?: ITextboxOptions) => void;
@@ -128,6 +133,10 @@ export interface Editor {
   // fillColor: string;
   // strokeColor: string;
   // strokeWidth: number;
+  changeFontSize: (value: number) => void;
+  getActiveFontSize: () => number;
+  changeTextAlign: (value: string) => void;
+  getActiveTextAlign: () => string;
   selectedObjects: fabric.Object[];
   getActiveFillColor: () => string;
   getActiveStrokeColor: () => string;
@@ -136,6 +145,11 @@ export interface Editor {
   getActiveFontFamily: () => string;
   getActiveFontWeight: () => number;
   changeFontWeight: (value: number) => void;
+  getActiveFontStyle: () => string;
+  changeFontLinethrough: (value: boolean) => void;
+  getActiveFontLinethrough: () => boolean;
+  changeFontUnderline: (value: boolean) => void;
+  getActiveFontUnderline: () => boolean;
 }
 
 export const FILL_COLOR = "rgba(0,0,0,1)";

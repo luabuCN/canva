@@ -83,6 +83,25 @@ body {
   }
 }
 
+@font-face {
+  font-family: "阿里妈妈数黑体";
+  src: url("/fonts/AlimamaShuHeiTi-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "阿里妈妈东方大楷";
+  src: url("/fonts/AlimamaDongFangDaKai-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "钉钉进步体";
+  src: url("/fonts/DingTalk-JinBuTi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border;

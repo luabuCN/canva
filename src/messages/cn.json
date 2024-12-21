@@ -37,6 +37,13 @@
     "paragraph": "段落",
     "font-family": "字体",
     "font-family-desc": "改变文字字体",
-    "bold": "粗体"
+    "bold": "粗体",
+    "italic": "斜体",
+    "strike": "删除线",
+    "underline": "下划线",
+    "align-left": "左对齐",
+    "align-center": "居中",
+    "align-right": "右对齐",
+    "delete": "删除"
   }
 }

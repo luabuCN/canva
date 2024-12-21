@@ -19,6 +19,9 @@ export default function Home({ params: { locale } }: Props) {
         {t("file")}
       </Button>
       <Link href="/editor/123">跳转</Link>
+      <div style={{ fontFamily: "阿里妈妈数黑体" }}>
+        阿里妈妈字体张陈林大萨达大萨达湿哒哒大萨达手打
+      </div>
     </div>
   );
 }

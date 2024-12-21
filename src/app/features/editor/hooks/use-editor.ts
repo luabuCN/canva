@@ -8,6 +8,7 @@ import {
   DIAMOND_OPTIONS,
   FILL_COLOR,
   FONT_FAMILY,
+  FONT_SIZE,
   FONT_WEIGHT,
   HEART_OPTIONS,
   PARALLELOGRAM_OPTIONS,
@@ -65,12 +66,129 @@ const buildEditor = ({
 
       addToCanvas(object);
     },
+    delete: () => {
+      canvas.getActiveObjects().forEach((object) => {
+        canvas.remove(object);
+      });
+      canvas.discardActiveObject();
+      canvas.renderAll();
+    },
     getActiveOpacity: () => {
       const selectedObject = selectedObjects[0];
       if (!selectedObject) {
         return 1;
       }
       const value = selectedObject.get("opacity") || 1;
+      return value;
+    },
+    changeFontSize: (value: number) => {
+      canvas.getActiveObjects().forEach((object) => {
+        if (isTextType(object.type)) {
+          // @ts-ignore
+          // Faulty TS library, fontSize exists.
+          object.set({ fontSize: value });
+        }
+      });
+      canvas.renderAll();
+    },
+    getActiveFontSize: () => {
+      const selectedObject = selectedObjects[0];
+
+      if (!selectedObject) {
+        return FONT_SIZE;
+      }
+
+      // @ts-ignore
+      // Faulty TS library, fontSize exists.
+      const value = selectedObject.get("fontSize") || FONT_SIZE;
+
+      return value;
+    },
+    changeTextAlign: (value: string) => {
+      canvas.getActiveObjects().forEach((object) => {
+        if (isTextType(object.type)) {
+          // @ts-ignore
+          // Faulty TS library, textAlign exists.
+          object.set({ textAlign: value });
+        }
+      });
+      canvas.renderAll();
+    },
+    getActiveTextAlign: () => {
+      const selectedObject = selectedObjects[0];
+
+      if (!selectedObject) {
+        return "left";
+      }
+
+      // @ts-ignore
+      // Faulty TS library, textAlign exists.
+      const value = selectedObject.get("textAlign") || "left";
+
+      return value;
+    },
+    changeFontUnderline: (value: boolean) => {
+      canvas.getActiveObjects().forEach((object) => {
+        if (isTextType(object.type)) {
+          // @ts-ignore
+          // Faulty TS library, underline exists.
+          object.set({ underline: value });
+        }
+      });
+      canvas.renderAll();
+    },
+    getActiveFontUnderline: () => {
+      const selectedObject = selectedObjects[0];
+
+      if (!selectedObject) {
+        return false;
+      }
+
+      // @ts-ignore
+      // Faulty TS library, underline exists.
+      const value = selectedObject.get("underline") || false;
+
+      return value;
+    },
+    changeFontLinethrough: (value: boolean) => {
+      canvas.getActiveObjects().forEach((object) => {
+        if (isTextType(object.type)) {
+          // @ts-ignore
+          // Faulty TS library, linethrough exists.
+          object.set({ linethrough: value });
+        }
+      });
+      canvas.renderAll();
+    },
+    getActiveFontLinethrough: () => {
+      const selectedObject = selectedObjects[0];
+
+      if (!selectedObject) {
+        return false;
+      }
+
+      // @ts-ignore
+      // Faulty TS library, linethrough exists.
+      const value = selectedObject.get("linethrough") || false;
+
+      return value;
+    },
+    changeFontStyle: (value: string) => {
+      canvas.getActiveObjects().forEach((object) => {
+        if (isTextType(object.type)) {
+          // @ts-ignore
+          object.set({ fontStyle: value });
+        }
+      });
+      canvas.renderAll();
+    },
+    getActiveFontStyle: () => {
+      const selectedObject = selectedObjects[0];
+      if (!selectedObject) {
+        return "normal";
+      }
+      // @ts-ignore
+      const value = selectedObject.get("fontStyle") || "normal";
       return value;
     },
     changeFontWeight: (value: number) => {

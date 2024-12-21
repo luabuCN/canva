@@ -37,6 +37,13 @@
     "paragraph": "Paragraph",
     "font-family": "Font family",
     "font-family-desc": "Change the text font family",
-    "bold": "Bold"
+    "bold": "Bold",
+    "italic": "Italic",
+    "strike": "Strike",
+    "underline": "Underline",
+    "align-left": "Align left",
+    "align-center": "Align center",
+    "align-right": "Align right",
+    "delete": "Delete"
   }
 }
