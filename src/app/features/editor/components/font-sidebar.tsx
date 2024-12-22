@@ -4,9 +4,6 @@ import ToolSidebarHeader from "./tool-sidebar-header";
 import { useTranslations } from "next-intl";
 import ToolSidebarClose from "./tool-sidebar-close";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
-import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 interface FontProps {

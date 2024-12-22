@@ -44,6 +44,9 @@
     "align-left": "左对齐",
     "align-center": "居中",
     "align-right": "右对齐",
-    "delete": "删除"
+    "delete": "删除",
+    "image": "图片",
+    "image-desc": "将图片添加到画布",
+    "image-err": "无法获取头像"
   }
 }

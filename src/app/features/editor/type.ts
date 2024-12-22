@@ -128,6 +128,7 @@ export interface Editor {
   getActiveOpacity: () => number;
   canvas: fabric.Canvas;
   addText: (value: string, options?: ITextboxOptions) => void;
+  addImage: (value: string) => void;
   bringForward: () => void;
   sendBackward: () => void;
   // fillColor: string;

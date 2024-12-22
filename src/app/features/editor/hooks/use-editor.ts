@@ -57,6 +57,21 @@ const buildEditor = ({
   };
 
   return {
+    addImage: (value: string) => {
+      fabric.Image.fromURL(
+        value,
+        (image) => {
+          const workspace = getWorkspace();
+          image.scaleToHeight(workspace?.width || 0);
+          image.scaleToHeight(workspace?.height || 0);
+
+          addToCanvas(image);
+        },
+        {
+          crossOrigin: "anonymous",
+        }
+      );
+    },
     addText: (value, options) => {
       const object = new fabric.Textbox(value, {
         ...TEXT_OPTIONS,
