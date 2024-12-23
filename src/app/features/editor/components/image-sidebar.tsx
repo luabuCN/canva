@@ -9,6 +9,7 @@ import { useGetImages } from "../../images/api/user-get-images";
 import { AlertTriangle, Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { UploadButton } from "@/lib/uploadthing";
 
 interface ImageProps {
   activeTool: ActiveTool;
@@ -35,6 +36,18 @@ const ImageSidebar = ({
       )}
     >
       <ToolSidebarHeader title={t("image")} description={t("image-desc")} />
+      <div className="p-4 border-b">
+        <UploadButton
+          appearance={{
+            button: "w-full text-sm font-medium",
+            allowedContent: "hidden",
+          }}
+          endpoint="imageUploader"
+          onClientUploadComplete={(res) => {
+            editor?.addImage(res[0].url);
+          }}
+        />
+      </div>
       {isLoading && (
         <div className="flex items-center justify-center flex-1">
           <Loader className="size-4 text-muted-foreground animate-spin" />

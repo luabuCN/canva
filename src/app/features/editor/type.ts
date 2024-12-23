@@ -1,6 +1,5 @@
 import type { ITextboxOptions } from "fabric/fabric-impl";
 import * as material from "material-colors";
-
 export const selectionDependentTools = [
   "fill",
   "font",
@@ -151,6 +150,7 @@ export interface Editor {
   getActiveFontLinethrough: () => boolean;
   changeFontUnderline: (value: boolean) => void;
   getActiveFontUnderline: () => boolean;
+  changeImageFilter: (value: string) => void;
 }
 
 export const FILL_COLOR = "rgba(0,0,0,1)";
