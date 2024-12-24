@@ -72,6 +72,9 @@
     "huerotate": "huerotate",
     "resize": "resize",
     "saturation": "saturation",
-    "gamma": "gamma"
+    "gamma": "gamma",
+    "ai-desc": "Add AI generated images to your canvas",
+    "generate": "Generate",
+    "ai-prompt": "Write your prompt here"
   }
 }

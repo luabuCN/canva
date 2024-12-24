@@ -15,6 +15,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "sf-maas-uat-prod.oss-cn-shanghai.aliyuncs.com",
+      },
+      {
+        protocol: "https",
         hostname: "replicate.delivery",
       },
     ],

@@ -72,6 +72,9 @@
     "huerotate": "色调旋转",
     "resize": "调整大小",
     "saturation": "饱和度",
-    "gamma": "伽马"
+    "gamma": "伽马",
+    "ai-desc": "为你的画布添加AI生成的图像",
+    "generate": "生成",
+    "ai-prompt": "请表述你想要生成的图片"
   }
 }
