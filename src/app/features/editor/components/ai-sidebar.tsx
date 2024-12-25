@@ -26,9 +26,6 @@ const AiSidebar = ({ editor, activeTool, onChangeActiveTool }: AiProps) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    editor?.addImage(
-      "https://sf-maas-uat-prod.oss-cn-shanghai.aliyuncs.com/outputs/467071e0-d59a-4936-a0fe-741f78f2b98c_0.png"
-    );
     mutation.mutate(
       { prompt: value },
       {
