@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
+import { uploadRemoteImage } from "../uploadthing/core";
 
 const app = new Hono().post(
   "/generate-image",
@@ -44,10 +45,13 @@ const app = new Hono().post(
 
     const data = await response.json();
     const url = data.images?.[0]?.url;
-    if (!url) {
+    const urlData = await uploadRemoteImage(url);
+    if (!urlData) {
       throw new Error("未生成图片 URL");
     }
-    return c.json({ data: url });
+    console.log(urlData, "1111111111111111");
+
+    return c.json({ data: urlData });
   }
 );
 

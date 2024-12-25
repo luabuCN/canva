@@ -33,9 +33,7 @@ const AiSidebar = ({ editor, activeTool, onChangeActiveTool }: AiProps) => {
       { prompt: value },
       {
         onSuccess: ({ data }) => {
-          console.log(data, "data");
-
-          editor?.addImage(data);
+          editor?.addImage(data.url);
         },
       }
     );
