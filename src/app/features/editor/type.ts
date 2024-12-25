@@ -90,8 +90,8 @@ export type BuildEditorProps = {
   // canUndo: () => boolean;
   // canRedo: () => boolean;
   // autoZoom: () => void;
-  // copy: () => void;
-  // paste: () => void;
+  copy: () => void;
+  paste: () => void;
   canvas: fabric.Canvas;
   fillColor: string;
   strokeColor: string;
@@ -107,6 +107,8 @@ export type BuildEditorProps = {
 };
 
 export interface Editor {
+  onCopy: () => void;
+  onPaste: () => void;
   delete: () => void;
   addCircle: () => void;
   addSoftRectangle: () => void;
@@ -133,6 +135,8 @@ export interface Editor {
   // fillColor: string;
   // strokeColor: string;
   // strokeWidth: number;
+  disableDrawingMode: () => void;
+  enableDrawingMode: () => void;
   changeFontSize: (value: number) => void;
   getActiveFontSize: () => number;
   changeTextAlign: (value: string) => void;

@@ -75,6 +75,10 @@
     "gamma": "gamma",
     "ai-desc": "Add AI generated images to your canvas",
     "generate": "Generate",
-    "ai-prompt": "Write your prompt here"
+    "ai-prompt": "Write your prompt here",
+    "duplicate": "Duplicate",
+    "draw": "Draw",
+    "draw-desc": "Modify brush settings",
+    "brush-width": "Brush width"
   }
 }

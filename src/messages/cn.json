@@ -75,6 +75,10 @@
     "gamma": "伽马",
     "ai-desc": "为你的画布添加AI生成的图像",
     "generate": "生成",
-    "ai-prompt": "请表述你想要生成的图片"
+    "ai-prompt": "请表述你想要生成的图片",
+    "duplicate": "添加副本",
+    "draw": "绘制",
+    "draw-desc": "修改画笔设置",
+    "brush-width": " 画笔宽度"
   }
 }

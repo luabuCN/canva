@@ -50,8 +50,6 @@ const app = new Hono().post(
     if (!urlData) {
       throw new Error("未生成图片 URL");
     }
-    console.log(urlData, "1111111111111111");
-
     return c.json({ data: urlData });
   }
 );
