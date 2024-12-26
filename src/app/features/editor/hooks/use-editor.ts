@@ -28,6 +28,7 @@ import { createFilter, isTextType } from "../utils";
 import { useClipboard } from "./use-clipboard";
 
 const buildEditor = ({
+  autoZoom,
   canvas,
   fillColor,
   setFillColor,
@@ -60,6 +61,36 @@ const buildEditor = ({
   };
 
   return {
+    autoZoom: () => autoZoom(),
+    zoomIn: () => {
+      let zoomRatio = canvas.getZoom();
+      zoomRatio += 0.05;
+      const center = canvas.getCenter();
+      canvas.zoomToPoint(
+        new fabric.Point(center.left, center.top),
+        zoomRatio > 1 ? 1 : zoomRatio
+      );
+    },
+    zoomOut: () => {
+      let zoomRatio = canvas.getZoom();
+      zoomRatio -= 0.05;
+      const center = canvas.getCenter();
+      canvas.zoomToPoint(
+        new fabric.Point(center.left, center.top),
+        zoomRatio < 0.2 ? 0.2 : zoomRatio
+      );
+    },
+    getWorkspace: () => getWorkspace(),
+    changeSize: (value: { width: number; height: number }) => {
+      const workspace = getWorkspace();
+      workspace?.set(value);
+      autoZoom();
+    },
+    changeBackground: (value: string) => {
+      const workspace = getWorkspace();
+      workspace?.set({ fill: value });
+      canvas.renderAll();
+    },
     enableDrawingMode: () => {
       canvas.discardActiveObject();
       canvas.renderAll();
@@ -534,7 +565,7 @@ export const useEditor = ({ clearSelectionCallback }: EditorHookProps) => {
     useState<number[]>(STROKE_DASH_ARRAY);
 
   const { copy, paste } = useClipboard({ canvas });
-  useAutoResize({ canvas, container });
+  const { autoZoom } = useAutoResize({ canvas, container });
   useCanvasEvents({
     canvas,
     setSelectedObjects,
@@ -543,6 +574,7 @@ export const useEditor = ({ clearSelectionCallback }: EditorHookProps) => {
   const editor = useMemo(() => {
     if (canvas) {
       return buildEditor({
+        autoZoom,
         copy,
         paste,
         canvas,
@@ -573,6 +605,7 @@ export const useEditor = ({ clearSelectionCallback }: EditorHookProps) => {
     selectedObjects,
     fontFamily,
     strokeDashArray,
+    autoZoom,
   ]);
 
   const init = useCallback(

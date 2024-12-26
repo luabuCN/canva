@@ -79,6 +79,12 @@
     "duplicate": "添加副本",
     "draw": "绘制",
     "draw-desc": "修改画笔设置",
-    "brush-width": " 画笔宽度"
+    "brush-width": " 画笔宽度",
+    "height": "高度",
+    "width": "宽度",
+    "set-desc": "工作区域设置",
+    "zoomin": "放大",
+    "zoomout": "缩小",
+    "reset": "重置"
   }
 }

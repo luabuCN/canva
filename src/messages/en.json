@@ -79,6 +79,12 @@
     "duplicate": "Duplicate",
     "draw": "Draw",
     "draw-desc": "Modify brush settings",
-    "brush-width": "Brush width"
+    "brush-width": "Brush width",
+    "height": "Height",
+    "width": "Width",
+    "set-desc": "Workspace settings",
+    "zoomin": "Zoom In",
+    "zoomout": "Zoom Out",
+    "reset": "reset"
   }
 }
