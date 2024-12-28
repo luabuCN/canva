@@ -9,6 +9,17 @@ export const selectionDependentTools = [
   "stroke-color",
   "stroke-width",
 ];
+
+export const JSON_KEYS = [
+  "name",
+  "gradientAngle",
+  "selectable",
+  "hasControls",
+  "linkData",
+  "editable",
+  "extensionType",
+  "extension",
+];
 export interface EditorHookProps {
   // defaultState?: string;
   // defaultWidth?: number;
@@ -84,11 +95,11 @@ export const colors = [
 ];
 
 export type BuildEditorProps = {
-  // undo: () => void;
-  // redo: () => void;
-  // save: (skip?: boolean) => void;
-  // canUndo: () => boolean;
-  // canRedo: () => boolean;
+  undo: () => void;
+  redo: () => void;
+  save: (skip?: boolean) => void;
+  canUndo: () => boolean;
+  canRedo: () => boolean;
   autoZoom: () => void;
   copy: () => void;
   paste: () => void;
@@ -107,6 +118,10 @@ export type BuildEditorProps = {
 };
 
 export interface Editor {
+  onUndo: () => void;
+  onRedo: () => void;
+  canUndo: () => boolean;
+  canRedo: () => boolean;
   autoZoom: () => void;
   zoomIn: () => void;
   zoomOut: () => void;

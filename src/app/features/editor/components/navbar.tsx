@@ -22,15 +22,20 @@ import { Hint } from "@/components/hint";
 import { CiFileOn } from "react-icons/ci";
 import LocaleSwitch from "@/components/localeSwitch";
 import { useTranslations } from "next-intl";
-import type { ActiveTool } from "../type";
+import type { ActiveTool, Editor } from "../type";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
+  editor: Editor | undefined;
   activeTool: ActiveTool;
   onChangeActiveTool: (tool: ActiveTool) => void;
 }
 
-export const Navbar = ({ activeTool, onChangeActiveTool }: NavbarProps) => {
+export const Navbar = ({
+  activeTool,
+  onChangeActiveTool,
+  editor,
+}: NavbarProps) => {
   const t = useTranslations("editor");
   return (
     <nav className="w-full flex items-center p-4 h-[68px] gap-x-8 border-b lg:pl-[34px]">
@@ -66,13 +71,26 @@ export const Navbar = ({ activeTool, onChangeActiveTool }: NavbarProps) => {
             <MousePointerClick className="size-4" />
           </Button>
         </Hint>
-        <Hint label={t("redo")} side="bottom" sideOffset={10} align="center">
-          <Button size="icon" variant="ghost" className="">
+
+        <Hint label={t("undo")} side="bottom" sideOffset={10} align="center">
+          <Button
+            size="icon"
+            variant="ghost"
+            className=""
+            disabled={!editor?.canUndo()}
+            onClick={() => editor?.onUndo()}
+          >
             <Undo2 className="size-4" />
           </Button>
         </Hint>
-        <Hint label={t("undo")} side="bottom" sideOffset={10} align="center">
-          <Button size="icon" variant="ghost" className="">
+        <Hint label={t("redo")} side="bottom" sideOffset={10} align="center">
+          <Button
+            size="icon"
+            variant="ghost"
+            className=""
+            disabled={!editor?.canRedo()}
+            onClick={() => editor?.onRedo()}
+          >
             <Redo2 className="size-4" />
           </Button>
         </Hint>
