@@ -123,6 +123,11 @@ export interface Editor {
   canUndo: () => boolean;
   canRedo: () => boolean;
   autoZoom: () => void;
+  savePng: () => void;
+  saveSvg: () => void;
+  saveJpg: () => void;
+  loadJson: (json: string) => void;
+  saveJson: () => void;
   zoomIn: () => void;
   zoomOut: () => void;
   getWorkspace: () => fabric.Object | undefined;

@@ -28,6 +28,7 @@
     "lucide-react": "^0.466.0",
     "material-colors": "^1.2.6",
     "next": "14.2.4",
+    "next-auth": "5.0.0-beta.25",
     "next-intl": "^3.26.0",
     "react": "^18",
     "react-color": "^2.19.3",
@@ -38,6 +39,8 @@
     "tailwindcss-animate": "^1.0.7",
     "unsplash-js": "^7.0.19",
     "uploadthing": "^7.4.1",
+    "use-file-picker": "^2.1.2",
+    "uuidv4": "^6.2.13",
     "zod": "^3.24.1"
   },
   "devDependencies": {

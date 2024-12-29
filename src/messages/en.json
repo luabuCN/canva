@@ -85,6 +85,7 @@
     "set-desc": "Workspace settings",
     "zoomin": "Zoom In",
     "zoomout": "Zoom Out",
-    "reset": "reset"
+    "reset": "reset",
+    "close": "Are you sure you want to close?"
   }
 }

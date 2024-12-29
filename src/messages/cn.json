@@ -3,7 +3,7 @@
   "title": "可画",
   "editor": {
     "file": "文件",
-    "json-desc": "保存以便编辑",
+    "json-desc": "上传本地JSON文件",
     "select": "选中",
     "redo": "重做",
     "undo": "撤消",
@@ -85,6 +85,7 @@
     "set-desc": "工作区域设置",
     "zoomin": "放大",
     "zoomout": "缩小",
-    "reset": "重置"
+    "reset": "重置",
+    "close": "你确定要关闭吗"
   }
 }
