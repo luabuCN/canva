@@ -9,7 +9,6 @@ const app = new Hono().get("/", async (c) => {
     collectionIds: DEFAULT_COLLECTION_IDS,
     count: DEFAULT_COUNT,
   });
-
   if (images.errors) {
     return c.json({ error: "Something went wrong" }, 400);
   }
