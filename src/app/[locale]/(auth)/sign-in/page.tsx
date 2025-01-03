@@ -1,3 +1,4 @@
+import SignInCard from "@/app/features/auth/components/sign-in-card";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
@@ -7,7 +8,7 @@ const SignInPage = async () => {
   if (session) {
     redirect("/");
   }
-  return <div> Sign In Page</div>;
+  return <SignInCard />;
 };
 
 export default SignInPage;

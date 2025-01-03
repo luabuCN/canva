@@ -9,6 +9,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub, Google],
   debug: process.env.NODE_ENV === "development",
   pages: {
-    signIn: "/sign-in",
+    signIn: "/cn/sign-in",
   },
 });
