@@ -47,7 +47,7 @@
     "delete": "删除",
     "image": "图片",
     "image-desc": "将图片添加到画布",
-    "image-err": "无法获取头像",
+    "image-err": "无法获取图片",
     "filter": "滤镜",
     "filter-desc": " 为你的图片添加滤镜",
     "none": "无",
@@ -87,5 +87,25 @@
     "zoomout": "缩小",
     "reset": "重置",
     "close": "你确定要关闭吗"
+  },
+  "login": {
+    "login": "登录",
+    "register": "注册",
+    "login-account": "使用你的账户登录",
+    "create-account": "创建一个账户",
+    "signup-account": "使用你的邮箱和密码登录你的账户。",
+    "login-desc": "使用你的邮箱和密码登录你的账户。",
+    "invalid": "无效的邮箱或密码",
+    "wrong": "出了些问题",
+    "name": "姓名",
+    "email": "邮箱",
+    "password": "密码",
+    "forgot-password": "忘记密码？",
+    "github": "使用 GitHub 继续",
+    "google": "使用 Google 继续",
+    "have-account": "没有账户？",
+    "already-account": "已经有账户？",
+    "signup": "注册",
+    "signin": "登录"
   }
 }

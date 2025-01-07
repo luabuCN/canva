@@ -1,10 +1,11 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
+import { verifyAuth } from "@hono/auth-js";
 import { z } from "zod";
 import { uploadRemoteImage } from "../uploadthing/core";
-
 const app = new Hono().post(
   "/generate-image",
+  verifyAuth(),
   zValidator(
     "json",
     z.object({

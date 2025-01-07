@@ -87,5 +87,25 @@
     "zoomout": "Zoom Out",
     "reset": "reset",
     "close": "Are you sure you want to close?"
+  },
+  "login": {
+    "login": "Login",
+    "register": "Register",
+    "login-account": "Login with your account",
+    "create-account": "Create an account",
+    "signup-account": "Use your email and password to login to your account.",
+    "login-desc": "Use your email and password to login to your account.",
+    "invalid": "Invalid email or password",
+    "wrong": "Something went wrong",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "forgot-password": "Forgot password?",
+    "github": "Continue with GitHub",
+    "google": "Continue with Google",
+    "have-account": "Don't have an account?",
+    "already-account": "Already have an account?",
+    "signup": "Sign Up",
+    "signin": "Sign In"
   }
 }
