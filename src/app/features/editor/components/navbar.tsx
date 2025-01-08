@@ -25,6 +25,7 @@ import { useTranslations } from "next-intl";
 import type { ActiveTool, Editor } from "../type";
 import { cn } from "@/lib/utils";
 import { useFilePicker } from "use-file-picker";
+import UserButton from "../../auth/components/user-button";
 
 interface NavbarProps {
   editor: Editor | undefined;
@@ -182,6 +183,7 @@ export const Navbar = ({
             </DropdownMenuContent>
           </DropdownMenu>
           <LocaleSwitch />
+          <UserButton />
         </div>
       </div>
     </nav>

@@ -9,7 +9,8 @@ import {
 import { NextIntlClientProvider } from "next-intl";
 import { locales } from "@/config";
 import { Providers } from "@/components/providers";
-
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export function generateStaticParams() {
@@ -39,16 +40,19 @@ export default async function RootLayout({
 }>) {
   setRequestLocale(locale);
   const messages = await getMessages();
+  const session = await auth();
   return (
-    <html lang={locale}>
-      <body className={inter.className}>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            <Toaster />
-            {children}
-          </Providers>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang={locale}>
+        <body className={inter.className}>
+          <NextIntlClientProvider messages={messages}>
+            <Providers>
+              <Toaster />
+              {children}
+            </Providers>
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
