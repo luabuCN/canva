@@ -10,8 +10,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CreditCard, Loader, LogOut } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 const UserButton = () => {
+  const t = useTranslations("home");
   const session = useSession();
   if (session.status === "loading") {
     return <Loader className="size-4 animate-spin text-muted-foreground" />;
@@ -34,12 +36,12 @@ const UserButton = () => {
       <DropdownMenuContent align="end" className="w-60">
         <DropdownMenuItem disabled={false} onClick={() => {}} className="h-10">
           <CreditCard className="size-4 mr-2" />
-          Billing
+          {t("billing")}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="h-10" onClick={() => {}}>
           <LogOut className="size-4 mr-2" />
-          Log out
+          {t("logout")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

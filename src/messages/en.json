@@ -107,5 +107,16 @@
     "already-account": "Already have an account?",
     "signup": "Sign Up",
     "signin": "Sign In"
+  },
+  "home": {
+    "home": "home",
+    "title": "Visualize your ideas with The Canvas",
+    "desc": "Turn inspiration into design in no time. Simply upload an image and let AI do the rest.",
+    "create": "Start creating",
+    "upgrade": "Upgrade to Pro",
+    "billing": "Billing",
+    "help": "Get Help",
+    "logo": "The Canvas",
+    "logout": "Log Out"
   }
 }

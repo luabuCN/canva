@@ -1,7 +1,29 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+  });
+
+  return {
+    title: t("home.home"),
+  };
+}
+
+const DashboardLayout = ({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) => {
+  setRequestLocale(locale);
   return (
     <div className="bg-muted h-full ">
       <Sidebar />

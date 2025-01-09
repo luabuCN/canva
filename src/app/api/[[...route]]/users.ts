@@ -3,7 +3,6 @@ import { Hono } from "hono";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { db } from "@/db";
-import { User } from "@prisma/client";
 
 const app = new Hono().post(
   "/",

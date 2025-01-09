@@ -5,8 +5,10 @@ import { Separator } from "@/components/ui/separator";
 import { CreditCard, Crown, Home, MessageCircleQuestion } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "@/navigation";
+import { useTranslations } from "next-intl";
 
 const SidebarRoutes = () => {
+  const t = useTranslations("home");
   const pathname = usePathname();
   return (
     <div className="flex flex-col gap-y-4 flex-1">
@@ -18,7 +20,7 @@ const SidebarRoutes = () => {
           size="lg"
         >
           <Crown className="mr-2 size-4 fill-yellow-500 text-yellow-500" />
-          Upgrade to Pro
+          {t("upgrade")}
         </Button>
       </div>
       <div className="px-3">
@@ -28,7 +30,7 @@ const SidebarRoutes = () => {
         <SidebarItem
           href="/"
           icon={Home}
-          label="Home"
+          label={t("home")}
           isActive={pathname === "/"}
         />
       </ul>
@@ -39,13 +41,13 @@ const SidebarRoutes = () => {
         <SidebarItem
           href={pathname}
           icon={CreditCard}
-          label="Billing"
+          label={t("billing")}
           onClick={() => {}}
         />
         <SidebarItem
           href="mailto:support@example.com"
           icon={MessageCircleQuestion}
-          label="Get Help"
+          label={t("help")}
         />
       </ul>
     </div>

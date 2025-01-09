@@ -107,5 +107,16 @@
     "already-account": "已经有账户？",
     "signup": "注册",
     "signin": "登录"
+  },
+  "home": {
+    "home": "首页",
+    "title": "用The Canvas将你的想法可视化",
+    "desc": "快速将灵感转化为设计。只需上传一张图片，让AI完成剩下的工作。",
+    "create": "开始创作",
+    "upgrade": "升级到专业版",
+    "billing": "账单",
+    "help": "获取帮助",
+    "logo": "The Canvas",
+    "logout": "退出登录"
   }
 }
