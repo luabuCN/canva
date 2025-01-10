@@ -57,13 +57,9 @@ export const Navbar = ({
     accept: ".json",
     onFilesSuccessfullySelected: ({ plainFiles }: any) => {
       if (plainFiles && plainFiles.length > 0) {
-        console.log(plainFiles);
-
         const file = plainFiles[0];
         const reader = new FileReader();
         reader.readAsText(file, "UTF-8");
-        console.log(reader);
-
         reader.onload = () => {
           editor?.loadJson(reader.result as string);
         };
