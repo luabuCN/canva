@@ -21,15 +21,15 @@ export const JSON_KEYS = [
   "extension",
 ];
 export interface EditorHookProps {
-  // defaultState?: string;
-  // defaultWidth?: number;
-  // defaultHeight?: number;
+  defaultState?: string;
+  defaultWidth?: number;
+  defaultHeight?: number;
   clearSelectionCallback?: () => void;
-  // saveCallback?: (values: {
-  //   json: string;
-  //   height: number;
-  //   width: number;
-  // }) => void;
+  saveCallback?: (values: {
+    json: string;
+    height: number;
+    width: number;
+  }) => void;
 }
 
 export const fonts = [

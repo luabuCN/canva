@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
-import { BsCloudCheck } from "react-icons/bs";
+import { BsCloudCheck, BsCloudSlash } from "react-icons/bs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +13,7 @@ import {
   ChevronDown,
   Download,
   File,
+  Loader,
   MousePointerClick,
   Redo2,
   Undo2,
@@ -26,20 +27,32 @@ import type { ActiveTool, Editor } from "../type";
 import { cn } from "@/lib/utils";
 import { useFilePicker } from "use-file-picker";
 import UserButton from "../../auth/components/user-button";
+import { useMutationState } from "@tanstack/react-query";
 
 interface NavbarProps {
+  id: string;
   editor: Editor | undefined;
   activeTool: ActiveTool;
   onChangeActiveTool: (tool: ActiveTool) => void;
 }
 
 export const Navbar = ({
+  id,
   activeTool,
   onChangeActiveTool,
   editor,
 }: NavbarProps) => {
   const t = useTranslations("editor");
-
+  const data = useMutationState({
+    filters: {
+      mutationKey: ["project", { id }],
+      exact: true,
+    },
+    select: (mutation) => mutation.state.status,
+  });
+  const currentStatus = data[data.length - 1];
+  const isError = currentStatus === "error";
+  const isPending = currentStatus === "pending";
   const { openFilePicker } = useFilePicker({
     accept: ".json",
     onFilesSuccessfullySelected: ({ plainFiles }: any) => {
@@ -118,10 +131,24 @@ export const Navbar = ({
           </Button>
         </Hint>
         <Separator orientation="vertical" className="mx-2" />
-        <div className=" flex items-center gap-x-2">
-          <BsCloudCheck className="size-[20px] text-muted-foreground" />
-          <div className=" text-xs">{t("saved")}</div>
-        </div>
+        {isPending && (
+          <div className=" flex items-center gap-x-2">
+            <Loader className="size-[20px] animate-spin text-muted-foreground" />
+            <div className=" text-xs">{t("saving")}</div>
+          </div>
+        )}
+        {!isPending && isError && (
+          <div className=" flex items-center gap-x-2">
+            <BsCloudSlash className="size-[20px] text-muted-foreground" />
+            <div className=" text-xs">{t("failed-save")}</div>
+          </div>
+        )}
+        {!isPending && !isError && (
+          <div className=" flex items-center gap-x-2">
+            <BsCloudCheck className="size-[20px] text-muted-foreground" />
+            <div className=" text-xs">{t("saved")}</div>
+          </div>
+        )}
 
         <div className="ml-auto flex items-center gap-x-4">
           <DropdownMenu modal={false}>

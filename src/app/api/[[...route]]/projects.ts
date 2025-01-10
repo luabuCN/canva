@@ -4,7 +4,60 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
 import { auth } from "@/auth";
+const projectsInsertSchema = z.object({
+  id: z.string(),
+  json: z.string(),
+  name: z.string(),
+  userId: z.string(),
+  height: z.number(),
+  width: z.number(),
+  thumbnailUrl: z.string().nullable(),
+  isTemplate: z.boolean().nullable(),
+  isPro: z.boolean().nullable(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
 const app = new Hono()
+  .patch(
+    "/:id",
+    verifyAuth(),
+    zValidator("param", z.object({ id: z.string() })),
+    zValidator(
+      "json",
+      projectsInsertSchema
+        .omit({
+          id: true,
+          userId: true,
+          createdAt: true,
+          updatedAt: true,
+        })
+        .partial()
+    ),
+    async (c) => {
+      const session = await auth();
+      const { id } = c.req.valid("param");
+      const values = c.req.valid("json");
+
+      if (!session?.user?.id) {
+        return c.json({ error: "Unauthorized" }, 401);
+      }
+
+      const data = await db.project.update({
+        where: {
+          id,
+          userId: session.user.id,
+        },
+        data: {
+          ...values,
+          updatedAt: new Date(),
+        },
+      });
+      if (!data) {
+        return c.json({ error: "Project not found" }, 404);
+      }
+      return c.json(data);
+    }
+  )
   .get(
     "/:id",
     verifyAuth(),
@@ -32,11 +85,11 @@ const app = new Hono()
     verifyAuth(),
     zValidator(
       "json",
-      z.object({
-        name: z.string(),
-        json: z.string(),
-        width: z.number(),
-        height: z.number(),
+      projectsInsertSchema.pick({
+        name: true,
+        json: true,
+        width: true,
+        height: true,
       })
     ),
     async (c) => {

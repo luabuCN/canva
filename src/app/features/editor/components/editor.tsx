@@ -19,13 +19,22 @@ import FilterSidebar from "./filter-sidebar";
 import AiSidebar from "./ai-sidebar";
 import DrawSidebar from "./draw-sidebar";
 import SettingSidebar from "./setting-sidebar";
+import debounce from "lodash.debounce";
 import type { ResponseType } from "../../projects/api/use-get-project";
+import { useUpdateProject } from "../../projects/api/use-update-project";
 interface EditorProps {
   initialData: ResponseType["data"];
 }
 export const Editor = ({ initialData }: EditorProps) => {
   const [activeTool, setActiveTool] = useState<ActiveTool>("select");
 
+  const { mutate } = useUpdateProject(initialData.id);
+  const debouncedSave = useCallback(
+    debounce((values: { json: string; height: number; width: number }) => {
+      mutate(values);
+    }, 1000),
+    [mutate]
+  );
   const onClearSelection = useCallback(() => {
     if (selectionDependentTools.includes(activeTool)) {
       setActiveTool("select");
@@ -33,7 +42,11 @@ export const Editor = ({ initialData }: EditorProps) => {
   }, [activeTool]);
 
   const { init, editor } = useEditor({
+    defaultHeight: initialData.height,
+    defaultWidth: initialData.width,
+    defaultState: initialData.json,
     clearSelectionCallback: onClearSelection,
+    saveCallback: debouncedSave,
   });
   const onChangeActiveTool = useCallback(
     (tool: ActiveTool) => {
@@ -73,6 +86,7 @@ export const Editor = ({ initialData }: EditorProps) => {
   return (
     <div className="h-full flex flex-col">
       <Navbar
+        id={initialData.id}
         editor={editor}
         activeTool={activeTool}
         onChangeActiveTool={onChangeActiveTool}
