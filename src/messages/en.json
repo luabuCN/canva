@@ -121,6 +121,16 @@
     "billing": "Billing",
     "help": "Get Help",
     "logo": "The Canvas",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "sure": "Are you sure?",
+    "sure-desc": "This action cannot be undone.",
+    "projects": "Recent projects",
+    "no-find-projects": "Failed to load projects",
+    "no-projects": "No projects found",
+    "copy": "Make a copy",
+    "delete": "Delete",
+    "more": " Load more",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   }
 }

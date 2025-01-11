@@ -121,6 +121,16 @@
     "billing": "账单",
     "help": "获取帮助",
     "logo": "The Canvas",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "sure": "你确定吗？",
+    "sure-desc": "此操作无法撤销。",
+    "projects": "最近的项目",
+    "no-find-projects": "加载项目失败",
+    "no-projects": "未找到项目",
+    "copy": "复制",
+    "delete": "删除",
+    "more": "加载更多",
+    "cancel": "取消",
+    "confirm": "确认"
   }
 }

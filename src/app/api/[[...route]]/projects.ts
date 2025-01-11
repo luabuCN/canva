@@ -18,6 +18,94 @@ const projectsInsertSchema = z.object({
   updatedAt: z.string(),
 });
 const app = new Hono()
+  .delete(
+    "/:id",
+    verifyAuth(),
+    zValidator("param", z.object({ id: z.string() })),
+    async (c) => {
+      const session = await auth();
+      const { id } = c.req.valid("param");
+      if (!session?.user?.id) {
+        return c.json({ error: "Unauthorized" }, 401);
+      }
+      const project = await db.project.delete({
+        where: {
+          id,
+          userId: session.user.id,
+        },
+      });
+      if (!project) {
+        return c.json({ error: "Project not found" }, 404);
+      }
+      return c.json({ data: { id } });
+    }
+  )
+  .post(
+    "/:id/duplicate",
+    verifyAuth(),
+    zValidator("param", z.object({ id: z.string() })),
+    async (c) => {
+      const session = await auth();
+      const { id } = c.req.valid("param");
+      if (!session?.user?.id) {
+        return c.json({ error: "Unauthorized" }, 401);
+      }
+      const project = await db.project.findFirst({
+        where: {
+          id,
+          userId: session.user.id,
+        },
+      });
+      if (!project) {
+        return c.json({ error: "Project not found" }, 404);
+      }
+      const duplicateProject = await db.project.create({
+        data: {
+          name: `Copy of ${project.name}`,
+          json: project.json,
+          width: project.width,
+          height: project.height,
+          userId: session.user.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      });
+
+      return c.json({ data: duplicateProject });
+    }
+  )
+  .get(
+    "/",
+    verifyAuth(),
+    zValidator(
+      "query",
+      z.object({
+        page: z.coerce.number(),
+        limit: z.coerce.number(),
+      })
+    ),
+    async (c) => {
+      const session = await auth();
+      const { page, limit } = c.req.valid("query");
+      if (!session?.user?.id) {
+        return c.json({ error: "Unauthorized" }, 401);
+      }
+      const data = await db.project.findMany({
+        where: {
+          userId: session.user.id,
+        },
+        skip: (page - 1) * limit,
+        take: limit,
+        orderBy: {
+          updatedAt: "desc",
+        },
+      });
+      return c.json({
+        data,
+        nextPage: data.length === limit ? page + 1 : null,
+      });
+    }
+  )
   .patch(
     "/:id",
     verifyAuth(),
