@@ -18,6 +18,30 @@ const projectsInsertSchema = z.object({
   updatedAt: z.string(),
 });
 const app = new Hono()
+  .get(
+    "/templates",
+    verifyAuth(),
+    zValidator(
+      "query",
+      z.object({
+        page: z.coerce.number(),
+        limit: z.coerce.number(),
+      })
+    ),
+    async (c) => {
+      const { page, limit } = c.req.valid("query");
+      const data = await db.project.findMany({
+        where: {
+          isTemplate: true,
+        },
+        take: limit,
+        skip: (page - 1) * limit,
+        orderBy: [{ isPro: "asc" }, { updatedAt: "desc" }],
+      });
+
+      return c.json({ data });
+    }
+  )
   .delete(
     "/:id",
     verifyAuth(),
