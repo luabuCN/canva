@@ -90,7 +90,11 @@
     "zoomin": "Zoom In",
     "zoomout": "Zoom Out",
     "reset": "reset",
-    "close": "Are you sure you want to close?"
+    "close": "Are you sure you want to close?",
+    "template": "Templates",
+    "template-desc": "Choose from a variety of templates to get started",
+    "template-err": "Failed to load templates",
+    "select-template": "You are about to replace the current project with this template."
   },
   "login": {
     "login": "Login",
@@ -132,5 +136,13 @@
     "more": " Load more",
     "cancel": "Cancel",
     "confirm": "Confirm"
+  },
+  "subscriptions": {
+    "upgrade": "Upgrade to a paid plan",
+    "upgrade-desc": "Upgrade to a paid plan to unlock more features",
+    "project": "Unlimited projects",
+    "templates": "Unlimited templates",
+    "ai-img": "AI Image generation",
+    "up": "Upgrade"
   }
 }

@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useGenerateImage } from "../../ai/api/use-gemerate-image";
 import { useState } from "react";
 import Image from "next/image";
+import { usePaywall } from "../../subscriptions/hooks/use-paywall";
 
 interface AiProps {
   activeTool: ActiveTool;
@@ -17,6 +18,7 @@ interface AiProps {
 }
 
 const AiSidebar = ({ editor, activeTool, onChangeActiveTool }: AiProps) => {
+  const { shouldBlock, triggerPaywall } = usePaywall();
   const [value, setValue] = useState("");
   const t = useTranslations("editor");
   const mutation = useGenerateImage();
@@ -26,6 +28,10 @@ const AiSidebar = ({ editor, activeTool, onChangeActiveTool }: AiProps) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (shouldBlock) {
+      triggerPaywall();
+      return;
+    }
     mutation.mutate(
       { prompt: value },
       {

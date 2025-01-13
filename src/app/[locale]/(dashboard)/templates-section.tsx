@@ -6,8 +6,10 @@ import TemplateCard from "./template-card";
 import { useCreateProject } from "@/app/features/projects/api/use-create-project";
 import { useRouter } from "@/navigation";
 import type { ResponseType } from "@/app/features/projects/api/use-get-templates";
+import { usePaywall } from "@/app/features/subscriptions/hooks/use-paywall";
 
 const TemplatesSection = () => {
+  const { shouldBlock, triggerPaywall } = usePaywall();
   const router = useRouter();
   const mutation = useCreateProject();
   const { data, isLoading, isError } = useGetTemplates({
@@ -16,6 +18,10 @@ const TemplatesSection = () => {
   });
 
   const onClick = (template: ResponseType["data"][0]) => {
+    if (template.isPro && shouldBlock) {
+      triggerPaywall();
+      return;
+    }
     mutation.mutate(
       {
         name: `${template.name} project`,

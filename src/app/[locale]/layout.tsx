@@ -11,6 +11,7 @@ import { locales } from "@/config";
 import { Providers } from "@/components/providers";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { Modals } from "@/components/modals";
 const inter = Inter({ subsets: ["latin"] });
 
 export function generateStaticParams() {
@@ -48,6 +49,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Providers>
               <Toaster />
+              <Modals />
               {children}
             </Providers>
           </NextIntlClientProvider>

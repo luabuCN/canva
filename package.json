@@ -53,7 +53,8 @@
     "uploadthing": "^7.4.1",
     "use-file-picker": "^2.1.2",
     "uuidv4": "^6.2.13",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

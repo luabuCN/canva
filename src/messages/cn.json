@@ -90,7 +90,11 @@
     "zoomin": "放大",
     "zoomout": "缩小",
     "reset": "重置",
-    "close": "你确定要关闭吗"
+    "close": "你确定要关闭吗",
+    "template": "模版",
+    "template-desc": "从模版中选择",
+    "template-err": "模版加载失败",
+    "select-template": " 你即将替换当前项目为这个模版。"
   },
   "login": {
     "login": "登录",
@@ -132,5 +136,13 @@
     "more": "加载更多",
     "cancel": "取消",
     "confirm": "确认"
+  },
+  "subscriptions": {
+    "upgrade": "升级为付费计划",
+    "upgrade-desc": "升级为付费计划以解锁更多功能",
+    "project": "无限项目",
+    "templates": "无限模板",
+    "ai-img": "AI 图像生成",
+    "up": "升级"
   }
 }
