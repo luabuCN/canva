@@ -14,8 +14,10 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
+import { useCheckout } from "../api/use-checkout";
 
 export const SubscriptionsModal = () => {
+  const mutation = useCheckout();
   const { isOpen, onClose } = useSubscriptModal();
   const t = useTranslations("subscriptions");
   return (
@@ -44,7 +46,13 @@ export const SubscriptionsModal = () => {
           </li>
         </ul>
         <DialogFooter className="pt-2 mt-4 gap-y-2">
-          <Button className="w-full">{t("up")}</Button>
+          <Button
+            className="w-full"
+            onClick={() => mutation.mutate()}
+            disabled={mutation.isPending}
+          >
+            {t("up")}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
