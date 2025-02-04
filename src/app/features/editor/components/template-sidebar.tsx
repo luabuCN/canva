@@ -41,10 +41,10 @@ const TemplateSidebar = ({
   };
 
   const onClick = async (template: ResponseType["data"][0]) => {
-    if (template.isPro && shouldBlock) {
-      triggerPaywall();
-      return;
-    }
+    // if (template.isPro && shouldBlock) {
+    //   triggerPaywall();
+    //   return;
+    // }
     const ok = await confirm();
 
     if (ok) {

@@ -18,10 +18,10 @@ const TemplatesSection = () => {
   });
 
   const onClick = (template: ResponseType["data"][0]) => {
-    if (template.isPro && shouldBlock) {
-      triggerPaywall();
-      return;
-    }
+    // if (template.isPro && shouldBlock) {
+    //   triggerPaywall();
+    //   return;
+    // }
     mutation.mutate(
       {
         name: `${template.name} project`,

@@ -28,10 +28,10 @@ const AiSidebar = ({ editor, activeTool, onChangeActiveTool }: AiProps) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (shouldBlock) {
-      triggerPaywall();
-      return;
-    }
+    // if (shouldBlock) {
+    //   triggerPaywall();
+    //   return;
+    // }
     mutation.mutate(
       { prompt: value },
       {
