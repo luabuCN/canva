@@ -135,7 +135,8 @@
     "delete": "Delete",
     "more": " Load more",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "template_start": "Start from a template"
   },
   "subscriptions": {
     "upgrade": "Upgrade to a paid plan",

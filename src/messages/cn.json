@@ -135,7 +135,8 @@
     "delete": "删除",
     "more": "加载更多",
     "cancel": "取消",
-    "confirm": "确认"
+    "confirm": "确认",
+    "template_start": " 从模板开始"
   },
   "subscriptions": {
     "upgrade": "升级为付费计划",
