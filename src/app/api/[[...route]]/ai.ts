@@ -20,7 +20,7 @@ const app = new Hono().post(
     const options = {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.SILICONFLOW_KEY}`,
+        Authorization: `Bearer sk-izbhubqwzjotbkalcflwcmcjmegzpmhxxnwbozobkuxibgkr`,
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
